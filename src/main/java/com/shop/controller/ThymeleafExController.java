@@ -1,6 +1,8 @@
 package com.shop.controller;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,4 +33,45 @@ public class ThymeleafExController {
 		return "thymeleafEx/thymeleafEx02";
 	}
 
+	@GetMapping(value = "/ex03")
+	public String thymeleafExample03(Model model) {
+		List<ItemDto> itemDtos = getItemDtos();
+		model.addAttribute("itemDtos", itemDtos);
+		return "thymeleafEx/thymeleafEx03";
+	}
+
+	@GetMapping(value = "/ex04")
+	public String thymeleafExample04(Model model) {
+		List<ItemDto> itemDtos = getItemDtos();
+		model.addAttribute("itemDtos", itemDtos);
+		return "thymeleafEx/thymeleafEx04";
+	}
+
+	@GetMapping(value = "/ex05")
+	public String thymeleafExample05(Model model) {
+		return "thymeleafEx/thymeleafEx05";
+	}
+
+	@GetMapping(value = "/ex06")
+	public String thymeleafExample06(String param1, String param2, Model model) {
+		model.addAttribute("param1", param1);
+		model.addAttribute("param2", param2);
+		return "thymeleafEx/thymeleafEx06";
+	}
+
+	private List<ItemDto> getItemDtos() {
+		List<ItemDto> itemDtos = new ArrayList<>();
+
+		for (int i = 1; i <= 10; i++) {
+			ItemDto itemDto = new ItemDto();
+
+			itemDto.setItemDetail("상품 상세설명");
+			itemDto.setItemNm("테스트 상품" + i);
+			itemDto.setPrice(1000*i);
+			itemDto.setRegTime(LocalDateTime.now());
+
+			itemDtos.add(itemDto);
+		}
+		return itemDtos;
+	}
 }
