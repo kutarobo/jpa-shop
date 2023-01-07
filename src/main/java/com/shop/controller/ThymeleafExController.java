@@ -59,6 +59,11 @@ public class ThymeleafExController {
 		return "thymeleafEx/thymeleafEx06";
 	}
 
+	@GetMapping(value = "/ex07")
+	public String thymeleafExample07() {
+		return "thymeleafEx/thymeleafEx07";
+	}
+
 	private List<ItemDto> getItemDtos() {
 		List<ItemDto> itemDtos = new ArrayList<>();
 
